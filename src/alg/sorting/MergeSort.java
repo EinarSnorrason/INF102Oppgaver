@@ -1,9 +1,11 @@
 package alg.sorting;
 
-import org.jetbrains.annotations.NotNull;
 
 /**
- * Created by Einar Snorrason on 06/09/2017.
+ * MergeSort implementation
+ *
+ * Implements two of the three improvements suggested in Ex 2.2.11:
+ * Insertionsort for smaller arrays and switching arguments in recursive code
  */
 public class MergeSort {
     private static Comparable[] aux;
@@ -27,21 +29,11 @@ public class MergeSort {
         sort1(a,0,a.length-1);
     }
 
-    public static void sortBottom(Comparable[] a){
-        int N = a.length;
-        aux = new Comparable[N];
-        for (int i=1;i<N; i*=2){
-            for (int j=0; i*(j+1)<N; j+=2){
-                for(int n=0;n<N;n++){
-                    aux[n]=a[n];
-                }
-                merge(a,aux,i*j,i*(j+1),Math.min(N-1,i*(j+2)-1));
-            }
-        }
-    }
 
+    // Two different sorts to create "recursive trickery"
     private static void sort1(Comparable[] a, int lo, int hi){
         if (hi-lo <15){
+            // Use insertionsort for small arrays
             InsertionSort.sort(a,lo,hi);
             return;
         }
@@ -49,7 +41,7 @@ public class MergeSort {
         sort2(a,lo,mid);
         sort2(a,mid+1,hi);
 
-            merge(a,aux,lo,mid,hi);
+        merge(a,aux,lo,mid,hi);
 
     }
     private static void sort2(Comparable[] a, int lo, int hi){
@@ -62,7 +54,7 @@ public class MergeSort {
         sort1(a,lo,mid);
         sort1(a,mid+1,hi);
 
-            merge(aux,a,lo,mid,hi);
+        merge(aux,a,lo,mid,hi);
     }
 
 

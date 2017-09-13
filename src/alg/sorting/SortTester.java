@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by Einar Snorrason on 08/09/2017.
+ *Class to test sorting algorithms
  */
 public class SortTester {
     static Random random=new Random();
