@@ -3,7 +3,7 @@ package alg.union;
 import java.util.ArrayList;
 
 /**
- * Created by Einar Snorrason on 30/08/2017.
+ * Weighted union implementation of union find with path compression
  */
 public class WeightedUnion implements IUnionFind {
     private ArrayList<Integer> nodes;
@@ -32,12 +32,10 @@ public class WeightedUnion implements IUnionFind {
 
     @Override
     public int find(int p) {
-        if (nodes.get(p)==p){
-            return p;
-        } else {
-            nodes.set(p,find(nodes.get(p)));
-            return nodes.get(p);
+        while (p!=nodes.get(p)){
+            p=nodes.get(p);
         }
+        return p;
     }
 
     @Override
@@ -46,16 +44,32 @@ public class WeightedUnion implements IUnionFind {
         int b = find(q);
         int sza = size.get(a);
         int szb = size.get(b);
+        int root;
+        int temp;
 
         if (a == b){
             return;
         }
+
+        // Compare sizes to figure out which parent to set as root
         if (sza<szb){
-            nodes.set(a,b);
+            root = b;
             size.set(b,sza+szb);
         } else {
-            nodes.set(b,a);
+            root = a;
             size.set(a,sza+szb);
+        }
+
+        // Path compression:
+        while(nodes.get(p)!=root){
+            temp = nodes.get(p);
+            nodes.set(p,root);
+            p=temp;
+        }
+        while(nodes.get(q)!=root){
+            temp = nodes.get(q);
+            nodes.set(q,root);
+            q=temp;
         }
         count--;
     }

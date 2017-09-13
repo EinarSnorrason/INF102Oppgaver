@@ -29,25 +29,35 @@ public class QuickUnion implements IUnionFind {
 
     @Override
     public int find(int p) {
-        int temp = nodes.get(p);
-        if (temp == p){
-            return p;
-        } else {
-            nodes.set(p,find(temp));
-            return nodes.get(p);
+        while (p!=nodes.get(p)){
+            p=nodes.get(p);
         }
+        return p;
     }
 
     @Override
     public void union(int p, int q) {
         int a = find(p);
         int b = find(q);
-        if (a == b){
-            return;
-        }
-        nodes.set(a,b);
-        count--;
 
+        int temp;
+
+        if (a != b){
+            nodes.set(a,b);
+            count--;
+        }
+
+        // Path compression:
+        while(nodes.get(p)!=b){
+            temp = nodes.get(p);
+            nodes.set(p,b);
+            p=temp;
+        }
+        while(nodes.get(q)!=b){
+            temp = nodes.get(q);
+            nodes.set(q,b);
+            q=temp;
+        }
 
     }
 
