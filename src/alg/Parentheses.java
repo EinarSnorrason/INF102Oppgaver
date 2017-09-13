@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * Class that checks whether given string has balanced
+ * Class that checks whether given string has balanced parantheses
  *
  * Ex: "([]{()})" is balanced
  *     "[(])" is not
