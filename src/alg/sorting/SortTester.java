@@ -9,7 +9,7 @@ import java.util.Random;
 public class SortTester {
     static Random random=new Random();
     public static void main(String[] args){
-        int size = 10000008;
+        int size = 10000000;
         Integer[] list = new Integer[size];
         scramble(list);
 
@@ -24,7 +24,7 @@ public class SortTester {
         System.out.println("Time taken: "+time);
          **/
 
-        /*
+
         //ShellSort
         scramble(list);
         start = System.nanoTime();
@@ -32,17 +32,17 @@ public class SortTester {
         time = (System.nanoTime()-start)/1000000.0;
         System.out.println("ShellSort with "+size+" values:");
         System.out.println("Time taken: "+time+" ms");
-*/
-        /*
+
+
         //Mergesort
         scramble(list);
         start = System.nanoTime();
-        MergeSort.sortBottom(list);
+        MergeSort.sort(list);
         time = (System.nanoTime()-start)/1000000.0;
         System.out.println(isSorted(list));
         System.out.println("MergeSort with "+size+" values:");
         System.out.println("Time taken: "+time+" ms");
-        */
+
 
         //Quicksort
         scramble(list);
