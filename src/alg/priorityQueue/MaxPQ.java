@@ -1,4 +1,4 @@
-package alg;
+package alg.priorityQueue;
 
 import java.util.ArrayList;
 import java.util.Collections;

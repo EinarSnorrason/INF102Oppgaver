@@ -1,4 +1,5 @@
-package alg;
+package alg.union;
+
 import java.util.Random;
 import java.util.Scanner;
 

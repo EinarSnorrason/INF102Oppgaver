@@ -3,7 +3,7 @@ package alg;
 import java.util.ArrayList;
 
 /**
- * Created by Einar Snorrason on 01/09/2017.
+ * Tester for PrintLists class
  */
 public class SortedListTest {
     public static void main(String[] args){
