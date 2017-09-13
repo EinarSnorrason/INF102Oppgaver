@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by Einar Snorrason on 13/09/2017.
+ * Implementaton of Priority Queue that sorts highest variable first
  */
 public class MaxPQ<Key extends Comparable<Key>> {
 

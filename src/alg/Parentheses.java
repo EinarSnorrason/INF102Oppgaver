@@ -4,7 +4,10 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * Created by Einar Snorrason on 28/08/2017.
+ * Class that checks whether given string has balanced
+ *
+ * Ex: "([]{()})" is balanced
+ *     "[(])" is not
  */
 public class Parentheses {
 

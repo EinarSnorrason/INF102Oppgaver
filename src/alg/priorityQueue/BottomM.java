@@ -3,7 +3,7 @@ package alg.priorityQueue;
 import java.util.Random;
 
 /**
- * Created by Einar Snorrason on 13/09/2017.
+ * Class that uses MaxPQ to find lots of numbers
  */
 public class BottomM {
     static Random random = new Random();

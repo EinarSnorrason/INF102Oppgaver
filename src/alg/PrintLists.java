@@ -3,7 +3,9 @@ package alg;
 import java.util.ArrayList;
 
 /**
- * Prints two sorted lists in correct order
+ * Takes in two sorted lists and prints out all elements contained in both lists
+ * Run SortedListTest to test this
+ * (Runs in O(N))
  */
 public class PrintLists<E extends Comparable<E>>{
 
