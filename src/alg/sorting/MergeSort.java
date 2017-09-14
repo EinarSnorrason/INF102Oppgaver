@@ -1,6 +1,7 @@
 package alg.sorting;
 
 
+
 /**
  * MergeSort implementation
  *
@@ -40,6 +41,7 @@ public class MergeSort {
         int mid = lo+(hi-lo)/2;
         sort2(a,lo,mid);
         sort2(a,mid+1,hi);
+
 
         merge(a,aux,lo,mid,hi);
 

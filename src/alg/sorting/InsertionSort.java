@@ -1,7 +1,7 @@
 package alg.sorting;
 
 /**
- * Created by Einar Snorrason on 04/09/2017.
+ * Insertion sort implementation
  */
 public class InsertionSort {
     public static void sort(Comparable[] a){
@@ -13,6 +13,7 @@ public class InsertionSort {
         for (int i=lo+1;i<=hi;i++){
             Comparable value = a[i];
             int j;
+            // Insertion sort without exchanges (Ex 2.1.25)
             for (j=i;j>lo&&less(value,a[j-1]);j--){
                 a[j]=a[j-1];
             }
@@ -22,12 +23,6 @@ public class InsertionSort {
 
     public static boolean less(Comparable a, Comparable b){
         return a.compareTo(b)<0;
-    }
-
-    public static void swap(Comparable[] a, int  i, int j){
-        Comparable t = a[j];
-        a[j] = a[i];
-        a[i] = t;
     }
 
 

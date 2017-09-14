@@ -24,11 +24,7 @@ public class ShellSort {
         hsort(1,a);
     }
 
-    public static void swap(Comparable[] a, int  i, int j){
-        Comparable t = a[j];
-        a[j] = a[i];
-        a[i] = t;
-    }
+
     public static boolean less(Comparable a, Comparable b){
         return a.compareTo(b)<0;
     }
