@@ -7,22 +7,22 @@ import java.util.Random;
  *Class to test sorting algorithms
  */
 public class SortTester {
-    static Random random=new Random();
+    private static Random random=new Random();
     public static void main(String[] args){
-        int size = 10000000;
+        int size = 1000000;
         Integer[] list = new Integer[size];
         scramble(list);
 
         long start;
         double time;
-        /**
+        /*
         //Insertion sort
         long start = System.nanoTime();
         InsertionSort.sort(list);
         double time = (System.nanoTime()-start)/1000000.0;
         System.out.println(isSorted(list));
         System.out.println("Time taken: "+time);
-         **/
+         */
 
 
         //ShellSort
@@ -63,7 +63,7 @@ public class SortTester {
         System.out.println("Time taken: "+time+" ms");
     }
 
-    public static boolean isSorted(Comparable[] a){
+    private static <T extends Comparable<? super T>> boolean isSorted(T[] a){
         for (int i=1;i<a.length;i++){
             if(a[i].compareTo(a[i-1])<0){
                 return false;
@@ -72,7 +72,7 @@ public class SortTester {
         return true;
     }
 
-    public static void scramble(Comparable[] a){
+    private static void scramble(Comparable[] a){
         for(int i=0;i<a.length;i++){
             a[i] = random.nextInt();
         }

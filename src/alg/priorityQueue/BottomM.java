@@ -6,8 +6,9 @@ import java.util.Random;
  * Class that uses MaxPQ to find lots of numbers
  */
 public class BottomM {
-    static Random random = new Random();
-    public static void main(String[] args){
+    private static Random random = new Random();
+    public static void main(String[] args)
+    {
         MaxPQ<Double> pq = new MaxPQ<>();
         int M = 1000;
         for (long i=0; true;i++){
