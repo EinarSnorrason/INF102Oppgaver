@@ -2,6 +2,7 @@ package alg.priorityQueue;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Implementaton of Priority Queue that sorts highest variable first
@@ -9,6 +10,7 @@ import java.util.Collections;
 public class MaxPQ<Key extends Comparable<Key>> {
 
     private ArrayList<Key> pq;
+    private Comparator<Key> c;
 
     private int parent(int key) {return (key-1)/2;}
     private int leftChild(int key) {return 2*key+1;}
@@ -16,6 +18,12 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
     public MaxPQ(){
         pq = new ArrayList<>();
+    }
+
+    public MaxPQ(Comparator<Key> c){
+        pq = new ArrayList<>();
+        this.c = c;
+
     }
 
     public Key max(){
@@ -48,7 +56,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private boolean less(int i, int j){
-        return pq.get(i).compareTo(pq.get(j))<0;
+        return c==null ? pq.get(i).compareTo(pq.get(j))<0 :c.compare(pq.get(i),pq.get(j))<0;
     }
 
     private void swap(int i, int j){
