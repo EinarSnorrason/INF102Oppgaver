@@ -1,6 +1,5 @@
 package alg.sorting;
 
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -53,13 +52,13 @@ public class SortTester {
         System.out.println("QuickSort with "+size+" values:");
         System.out.println("Time taken: "+time+" ms");
 
-        //Javasort
+        //Heapsort
         scramble(list);
         start = System.nanoTime();
-        Arrays.sort(list);
+        HeapSort.sort(list);
         time = (System.nanoTime()-start)/1000000.0;
         System.out.println(isSorted(list));
-        System.out.println("JavaSort with "+size+" values:");
+        System.out.println("HeapSort with "+size+" values:");
         System.out.println("Time taken: "+time+" ms");
     }
 
