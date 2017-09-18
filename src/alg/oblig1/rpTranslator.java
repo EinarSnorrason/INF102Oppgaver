@@ -34,7 +34,8 @@ public class rpTranslator {
             }
         }
         System.out.println("Reverse Polish: "+args[0]);
-
+        // If the expression was correctly written, the only thing
+        // on the stack should be the answer.
         System.out.println("Infix: "+polishStack.pop());
     }
 

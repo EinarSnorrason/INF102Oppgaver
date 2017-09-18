@@ -22,19 +22,21 @@ public class siteBrowser {
     /**
      * List that contains the websites that have been visited from earliest to last
      */
-    private static ArrayList<String> history;
+    private static String[] history;
 
     public static void main(String args[]){
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter number of commands:");
-        int N = in.nextInt();
-        in.nextLine();
-        history = new ArrayList<>();
-        System.out.println("Write commands:");
+        //Scanner in = new Scanner(System.in);
+        //System.out.print("Enter number of commands:");
+        //int N = in.nextInt();
+        //in.nextLine();
+
+        int N = Integer.parseInt(args[0]);
+        history = new String[N];
+        //System.out.println("Write commands:");
         currentSite=-1;
         maxSite=currentSite;
-        for (int i=0;i<N;i++){
-            String entry = in.nextLine();
+        for (int i=1;i<=N;i++){
+            String entry = args[i];
             switch (entry){
                 case "*back*":
                     goBack();
@@ -44,9 +46,9 @@ public class siteBrowser {
                     break;
                 default:
                     System.out.println(entry);
-                    history.add(entry);
-                    currentSite++;
+                    history[++currentSite]=entry;
                     maxSite=currentSite;
+                    break;
             }
         }
     }
@@ -56,7 +58,7 @@ public class siteBrowser {
             System.out.println("[Warning: First Website]");
             return;
         }
-        System.out.println(history.get(--currentSite));
+        System.out.println(history[--currentSite]);
     }
 
     private static void goForward(){
@@ -64,7 +66,7 @@ public class siteBrowser {
             System.out.println("[Warning: Last Website]");
             return;
         }
-        System.out.println(history.get(++currentSite));
+        System.out.println(history[++currentSite]);
     }
 
 }
