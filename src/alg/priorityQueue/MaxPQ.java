@@ -64,10 +64,13 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void swim(int key){
-        while (key>0 && less(parent(key), key)) {
-            swap(parent(key),key);
+        Key value = pq.get(key);
+        while (key>0 && value.compareTo(pq.get(parent(key)))>0) {
+            //swap(parent(key),key);
+            pq.set((key),pq.get(parent(key)));
             key = parent(key);
         }
+        pq.set(key,value);
 
     }
 
