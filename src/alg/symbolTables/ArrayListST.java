@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * ArrayList implementation of a symbol table
  */
-public class ArrayListST <Key extends Comparable<? super Key>, Value> implements Iterable<Key>{
+public class ArrayListST <Key extends Comparable<? super Key>,Value>implements Iterable<Key>, ISymbolTable<Key, Value>{
 
     private int N = 0;
     private ArrayList<Key> keys = new ArrayList<>();
