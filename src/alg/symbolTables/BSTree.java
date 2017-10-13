@@ -63,6 +63,58 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
         return x;
     }
 
+    public Node min(){
+        return min(root);
+    }
+
+    private Node min(Node n){
+        if (n.left != null) return min(n.left);
+        return n;
+    }
+
+    public Node max(){
+        Node max = root;
+        while(max.right != null) max = max.right;
+        return max;
+    }
+
+    public void deleteMin(){
+        root = deleteMin(root);
+    }
+
+    /**
+     * Deletes smallest key in tree
+     * @param n
+     * @return
+     */
+    private Node deleteMin(Node n){
+        if (n.left == null) return n.right;
+        n.left = deleteMin(n.left);
+        n.N = size(n.left)+size(n.right)+1;
+        return n;
+    }
+
+    public void delete(Key key){
+        root = delete(root,key);
+    }
+
+    private Node delete(Node n, Key key){
+        if (n==null) return null;
+        int cmp = key.compareTo(n.key);
+        if (cmp <0) n.left = delete(n.left,key);
+        else if (cmp > 0) n.right = delete(n.right,key);
+        else{
+            if (n.left == null) return n.right;
+            if (n.right == null) return n.left;
+            Node t = n;
+            n = min(t.right);
+            n.right = deleteMin(t.right);
+            n.left = t.left;
+        }
+        n.N = size(n.left)+size(n.right)+1;
+        return n;
+
+    }
 
     /**
      * Iterator over the binary tree using stack
