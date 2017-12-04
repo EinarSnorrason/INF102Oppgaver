@@ -9,6 +9,7 @@ import java.util.Stack;
 public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbolTable<Key,Value>{
 
     private Node root;
+    private int compares=0;
 
     @Override
     public Iterator<Key> iterator() {
@@ -21,7 +22,7 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
         private Node left;
         private Node right;
         private int N;
-        public Node(Key key,Value val, int N){
+        Node(Key key,Value val, int N){
             this.key = key; this.val = val; this.N = N;
         }
     }
@@ -34,6 +35,10 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
         return x.N;
     }
 
+    public int numberOfCompares(){
+        return compares;
+    }
+
     @Override
     public Value get(Key key) {
         return get(root,key);
@@ -44,6 +49,7 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
 
         if (key.equals(x.key)) return x.val;
         int comp = key.compareTo(x.key);
+        compares++;
         if (comp<0) return get(x.left,key);
         return get(x.right,key);
     }
@@ -56,6 +62,7 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
     private Node put(Node x, Key key, Value val){
         if (x==null) return new Node(key,val,1);
         int cmp = key.compareTo(x.key);
+        compares++;
         if (cmp <0) x.left = put(x.left,key,val);
         else if (cmp >0) x.right = put(x.right,key,val);
         else x.val = val;
@@ -101,6 +108,7 @@ public class BSTree <Key extends Comparable<? super Key>,Value>implements ISymbo
     private Node delete(Node n, Key key){
         if (n==null) return null;
         int cmp = key.compareTo(n.key);
+        compares++;
         if (cmp <0) n.left = delete(n.left,key);
         else if (cmp > 0) n.right = delete(n.right,key);
         else{

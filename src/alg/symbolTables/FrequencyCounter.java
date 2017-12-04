@@ -16,7 +16,7 @@ public class FrequencyCounter {
         int minLen = Integer.parseInt(args[0]);
         String name = args[1];
         In in = new In(name);
-        ISymbolTable<String,Integer> st = new BSTree<>();
+        RedBlackBSTree<String,Integer> st = new RedBlackBSTree<>();
         String word;
         while(in.hasNextLine()){
             try{
@@ -34,17 +34,13 @@ public class FrequencyCounter {
         String maxStr = "";
         for (String s:st){
             int count = st.get(s);
+            System.out.println(s);
             if (maxInt<count){
                 maxInt = count;
                 maxStr = s;
             }
         }
         System.out.println(maxInt+" "+maxStr);
-
-
-
+        System.out.println(st.numberOfCompares());
     }
-
-
-
 }

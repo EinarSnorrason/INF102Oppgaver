@@ -23,7 +23,6 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public MaxPQ(Comparator<Key> c){
         pq = new ArrayList<>();
         this.c = c;
-
     }
 
     public Key max(){

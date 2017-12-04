@@ -21,7 +21,7 @@ public class SortTester {
         double time = (System.nanoTime()-start)/1000000.0;
         System.out.println(isSorted(list));
         System.out.println("Time taken: "+time);
-         */
+
 
 
         //ShellSort
@@ -60,6 +60,18 @@ public class SortTester {
         System.out.println(isSorted(list));
         System.out.println("HeapSort with "+size+" values:");
         System.out.println("Time taken: "+time+" ms");
+
+        */
+
+        Integer[] intList = new Integer[100000];
+        for (int i =0;i<intList.length;i++){
+            intList[i] = random.nextInt(100);
+        }
+
+        Integer[] smallIntList = {3,2,1};
+        System.out.println(isSorted(intList));
+        CountingSort.sort(intList);
+        System.out.println(isSorted(intList));
     }
 
     private static <T extends Comparable<? super T>> boolean isSorted(T[] a){
